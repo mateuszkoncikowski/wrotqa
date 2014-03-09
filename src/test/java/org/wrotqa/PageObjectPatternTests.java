@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.wrotqa.page.*;
 
 import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsNot.not;
 
@@ -39,7 +40,7 @@ public class PageObjectPatternTests {
          * //div[@class='mainInfo']
         **/
 
-        String pageInfo = homePage.getInfoAboutPortal();
+        String pageInfo = "";
 
         String expectedPageInfo = "Testuj.pl to pierwsza w Polsce testerska platforma";
         assertThat(pageInfo, containsString(expectedPageInfo));
@@ -61,8 +62,7 @@ public class PageObjectPatternTests {
          * //input[@type = 'submit']
          **/
 
-        PostLoginPage postLoginPage = homePage.getHeader().login("User", "WrongPassword");
-        String postLoginPageSource = postLoginPage.getPageSource();
+        String postLoginPageSource = "";
 
         String expectedErrorMessage = "Podałeś błędny e-mail lub hasło";
         assertThat(postLoginPageSource, containsString(expectedErrorMessage));
@@ -84,12 +84,10 @@ public class PageObjectPatternTests {
          * //div[@class='staticContent']
          **/
 
-        FaqPage faqPage = homePage.getHeaderMenu().openFaqPage();
-        PrivacyPolicyPage privacyPolicyPage = faqPage.getFooter().openPrivacyPolicyPage();
-        String pageContent = privacyPolicyPage.getPageContent();
+        String privacyPageContent = "";
 
         String expectedPageContent = "Niniejsza Polityka Prywatności informuje o sposobach ochrony";
-        assertThat(pageContent, containsString(expectedPageContent));
+        assertThat(privacyPageContent, containsString(expectedPageContent));
     }
 
     @Test
@@ -104,11 +102,11 @@ public class PageObjectPatternTests {
          * accept-cookies-checkbox
          **/
 
-        homePage.getAcceptCookiesPanel().acceptCookies();
-        String pageSource = homePage.getPageSource();
+        String pageSourceAfterAcceptingCookies = "";
 
         String cookiePanelMessage = "Ta strona używa ciasteczek (cookies)";
-        assertThat(pageSource, not(containsString(cookiePanelMessage)));
+        assertThat(pageSourceAfterAcceptingCookies, not(equalTo("")));
+        assertThat(pageSourceAfterAcceptingCookies, not(containsString(cookiePanelMessage)));
     }
 
     @After
