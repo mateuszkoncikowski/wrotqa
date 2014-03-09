@@ -33,6 +33,7 @@ public class PageObjectPatternTests {
          * Scenario:
          * 1) Open home page
          * 2) Get info about the portal
+         * 3) Assert if the retrieved content has the expected one
          *
          * Xpath:
          * //div[@class='mainInfo']
@@ -50,6 +51,7 @@ public class PageObjectPatternTests {
          * Scenario:
          * 1) Open home page
          * 2) Try to login into the portal using bad credentials
+         * 3) Assert for the error message with expected one
          *
          * Name:
          * username
@@ -72,7 +74,7 @@ public class PageObjectPatternTests {
          * Scenario:
          * 1) Open home page
          * 2) Go to privacy policy page via footer
-         * 3) Get static page content
+         * 3) Assert content of the page with expected one
          *
          * Id:
          * buttonFaq
@@ -96,6 +98,7 @@ public class PageObjectPatternTests {
          * Scenario:
          * 1) Open home page
          * 2) Accept cookies
+         * 3) Assert if the message is still there
          *
          * Id:
          * accept-cookies-checkbox
@@ -106,31 +109,6 @@ public class PageObjectPatternTests {
 
         String cookiePanelMessage = "Ta strona używa ciasteczek (cookies)";
         assertThat(pageSource, not(containsString(cookiePanelMessage)));
-
-    }
-
-    @Test
-    public void task_5() {
-        /**
-         * Scenario:
-         * 1) Open home page
-         * 2) Open contact page
-         * 3) Open privacy policy page via cookie panel
-         *
-         * Id:
-         * buttonContact
-         *
-         * Xpath:
-         * //a[contains(text(), 'Dowiedz się więcej')]
-         * //div[@class='staticContent']
-         **/
-
-        ContactPage contactPage = homePage.getHeaderMenu().openContactPage();
-        PrivacyPolicyPage privacyPolicyPage = contactPage.getAcceptCookiesPanel().openPrivacyPolicyPage();
-        String pageContent = privacyPolicyPage.getPageContent();
-
-        String expectedPageContent = "Niniejsza Polityka Prywatności informuje o sposobach ochrony";
-        assertThat(pageContent, containsString(expectedPageContent));
     }
 
     @After

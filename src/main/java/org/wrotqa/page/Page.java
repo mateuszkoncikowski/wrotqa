@@ -36,5 +36,4 @@ public class Page {
     public void typeInto(WebElement element, String value) {
         element.sendKeys(value);
     }
-
 }

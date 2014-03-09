@@ -3,9 +3,7 @@ package org.wrotqa.components;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import org.wrotqa.page.Page;
-import org.wrotqa.page.PrivacyPolicyPage;
 
 /**
  * User: Mateusz Koncikowski
@@ -27,10 +25,5 @@ public class AcceptCookiesPanel extends Page {
 
     public void acceptCookies() {
         clickElement(acceptCookiesButton);
-    }
-
-    public PrivacyPolicyPage openPrivacyPolicyPage() {
-        clickElement(privacyPolicyLink);
-        return PageFactory.initElements(getDriver(), PrivacyPolicyPage.class);
     }
 }
