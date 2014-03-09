@@ -1,7 +1,7 @@
 package org.wrotqa.page;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 /**
  * User: Mateusz Koncikowski
@@ -11,7 +11,7 @@ import org.openqa.selenium.WebDriver;
 
 public class Page {
 
-    public final WebDriver driver;
+    private final WebDriver driver;
 
     public Page(WebDriver driver) {
         this.driver = driver;
@@ -21,11 +21,20 @@ public class Page {
         return driver;
     }
 
-    public String getElementText(By by) {
-        return getDriver().findElement(by).getText();
+    public String getPageSource() {
+        return getDriver().getPageSource();
     }
 
-    public String getElementTextByXpath(String xpath) {
-        return getElementText(By.xpath(xpath));
+    public String getTextFromElement(WebElement element) {
+        return element.getText();
     }
+
+    public void clickElement(WebElement element) {
+        element.click();
+    }
+
+    public void typeInto(WebElement element, String value) {
+        element.sendKeys(value);
+    }
+
 }

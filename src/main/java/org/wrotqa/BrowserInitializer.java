@@ -2,6 +2,7 @@ package org.wrotqa;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.PageFactory;
 import org.wrotqa.page.HomePage;
 
 /**
@@ -10,7 +11,7 @@ import org.wrotqa.page.HomePage;
  * Time: 07:31
  */
 
-public class BrowserInitializer {
+class BrowserInitializer {
 
     private WebDriver driver;
 
@@ -22,7 +23,7 @@ public class BrowserInitializer {
 
     public HomePage openHomePage() {
         driver.get("http://testuj.pl/");
-        return new HomePage(driver);
+        return PageFactory.initElements(driver, HomePage.class);
     }
 
     public void closeBrowser() {
