@@ -40,10 +40,10 @@ public class PageObjectPatternTests {
          * //div[@class='mainInfo']
         **/
 
-        String pageInfo = "";
+        String result = "";
 
         String expectedPageInfo = "Testuj.pl to pierwsza w Polsce testerska platforma";
-        assertThat(pageInfo, containsString(expectedPageInfo));
+        assertThat(result, containsString(expectedPageInfo));
     }
 
     @Test
@@ -62,10 +62,10 @@ public class PageObjectPatternTests {
          * //input[@type = 'submit']
          **/
 
-        String postLoginPageSource = "";
+        String result = "";
 
         String expectedErrorMessage = "Podałeś błędny e-mail lub hasło";
-        assertThat(postLoginPageSource, containsString(expectedErrorMessage));
+        assertThat(result, containsString(expectedErrorMessage));
     }
 
     @Test
@@ -84,10 +84,10 @@ public class PageObjectPatternTests {
          * //div[@class='staticContent']
          **/
 
-        String privacyPageContent = "";
+        String result = "";
 
         String expectedPageContent = "Niniejsza Polityka Prywatności informuje o sposobach ochrony";
-        assertThat(privacyPageContent, containsString(expectedPageContent));
+        assertThat(result, containsString(expectedPageContent));
     }
 
     @Test
@@ -102,11 +102,11 @@ public class PageObjectPatternTests {
          * accept-cookies-checkbox
          **/
 
-        String pageSourceAfterAcceptingCookies = "";
+        String result = "";
 
         String cookiePanelMessage = "Ta strona używa ciasteczek (cookies)";
-        assertThat(pageSourceAfterAcceptingCookies, not(equalTo("")));
-        assertThat(pageSourceAfterAcceptingCookies, not(containsString(cookiePanelMessage)));
+        assertThat(result, not(equalTo("")));
+        assertThat(result, not(containsString(cookiePanelMessage)));
     }
 
     @After
