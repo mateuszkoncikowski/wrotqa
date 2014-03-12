@@ -39,10 +39,10 @@ public class PageObjectPatternTests {
          * //div[@class='mainInfo']
         **/
 
-        String pageInfo = homePage.getInfoAboutPortal();
+        String result = homePage.getInfoAboutPortal();
 
         String expectedPageInfo = "Testuj.pl to pierwsza w Polsce testerska platforma";
-        assertThat(pageInfo, containsString(expectedPageInfo));
+        assertThat(result, containsString(expectedPageInfo));
     }
 
     @Test
@@ -62,10 +62,10 @@ public class PageObjectPatternTests {
          **/
 
         PostLoginPage postLoginPage = homePage.getHeader().login("User", "WrongPassword");
-        String postLoginPageSource = postLoginPage.getPageSource();
+        String result = postLoginPage.getPageSource();
 
         String expectedErrorMessage = "Podałeś błędny e-mail lub hasło";
-        assertThat(postLoginPageSource, containsString(expectedErrorMessage));
+        assertThat(result, containsString(expectedErrorMessage));
     }
 
     @Test
@@ -86,10 +86,10 @@ public class PageObjectPatternTests {
 
         FaqPage faqPage = homePage.getHeaderMenu().openFaqPage();
         PrivacyPolicyPage privacyPolicyPage = faqPage.getFooter().openPrivacyPolicyPage();
-        String pageContent = privacyPolicyPage.getPageContent();
+        String result = privacyPolicyPage.getPageContent();
 
         String expectedPageContent = "Niniejsza Polityka Prywatności informuje o sposobach ochrony";
-        assertThat(pageContent, containsString(expectedPageContent));
+        assertThat(result, containsString(expectedPageContent));
     }
 
     @Test
@@ -105,10 +105,10 @@ public class PageObjectPatternTests {
          **/
 
         homePage.getAcceptCookiesPanel().acceptCookies();
-        String pageSource = homePage.getPageSource();
+        String result = homePage.getPageSource();
 
         String cookiePanelMessage = "Ta strona używa ciasteczek (cookies)";
-        assertThat(pageSource, not(containsString(cookiePanelMessage)));
+        assertThat(result, not(containsString(cookiePanelMessage)));
     }
 
     @After
