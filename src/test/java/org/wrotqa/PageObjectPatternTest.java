@@ -16,7 +16,7 @@ import static org.hamcrest.core.IsNot.not;
  * Time: 07:21
  */
 
-public class PageObjectPatternTests {
+public class PageObjectPatternTest {
 
     private HomePage homePage;
     private BrowserInitializer initializer;
